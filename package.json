@@ -24,6 +24,9 @@
     "url": "https://github.com/fremtind-datakommersialisering/malus-iotpoc/issues"
   },
   "homepage": "https://github.com/fremtind-datakommersialisering/malus-iotpoc#readme",
+  "engines": {
+    "node": "12.14.0"
+  },
   "devDependencies": {
     "lerna": "^3.20.2"
     "prettier": "^2.0.2",
