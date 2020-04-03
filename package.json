@@ -6,9 +6,16 @@
   "private": true,
   "scripts": {
     "autoformat": "prettier --write '**/*.{ts,tsx,js,jsx,json}'",
+    "build": "lerna run build",
     "ios": "lerna run ios --scope=mobile --stream --",
     "android": "lerna run android --scope=mobile --stream --",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "lerna run test --stream --"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "workspaces": [
     "packages/*",
@@ -27,8 +34,23 @@
   "engines": {
     "node": "12.14.0"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "if git-branch-is master; then commitlint -E HUSKY_GIT_PARAMS; else true; fi",
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run build"
+    }
+  },
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/jest": "^25.1.5",
+    "conventional-changelog-conventionalcommits": "^4.2.3",
+    "git-branch-is": "^3.1.0",
+    "husky": "^4.2.3",
+    "lerna": "^3.20.2",
+    "lint-staged": "^10.1.1",
     "prettier": "^2.0.2",
+    "tslint": "^6.1.1"
   }
 }
