@@ -5,6 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "autoformat": "prettier --write '**/*.{ts,tsx,js,jsx,json}'",
     "ios": "lerna run ios --scope=mobile --stream --",
     "android": "lerna run android --scope=mobile --stream --",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,5 +26,6 @@
   "homepage": "https://github.com/fremtind-datakommersialisering/malus-iotpoc#readme",
   "devDependencies": {
     "lerna": "^3.20.2"
+    "prettier": "^2.0.2",
   }
 }
